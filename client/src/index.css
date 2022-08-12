@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn {
+    @apply
+      w-40
+      mr-4
+      py-2
+      px-4
+      font-semibold
+      border-2
+      border-solid
+      border-white
+      hover:bg-white
+      hover:text-black
+  }
+}
