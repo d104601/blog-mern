@@ -5,8 +5,6 @@
 @layer components {
   .btn {
     @apply
-      w-40
-      mr-4
       py-2
       px-4
       font-semibold
@@ -15,5 +13,23 @@
       border-white
       hover:bg-white
       hover:text-black
+  }
+
+  .card {
+    @apply
+      mx-4
+      my-4
+      border-2
+      border-solid
+      border-white
+  }
+
+  .input {
+    @apply
+      bg-black
+      border-2
+      border-solid
+      border-white
+      w-full
   }
 }

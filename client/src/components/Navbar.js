@@ -1,31 +1,33 @@
 import React, { useState } from 'react';
 
 function Navbar() {
-    const [navMenu, setNavMenu] = useState(
-        [
-          ["Home", "/home"],
-          ["Dashboard", "/dashboard"]
-        ]
-    );
-    
     const [logInStatus, setLogInStatus] = useState(false);
     
     return(
         <div className="container mx-auto px-4">
           <ul className="flex py-4">
-            {
-              navMenu.map(([title, url]) => (
-                <li><a href={url} className='btn'>{title}</a></li>
-              ))
-            }
-            
-            <li>
+            <li><a href="/" className='btn'>Home</a></li>
             {
               logInStatus
-                ? <a className="btn">Sign Out</a>
-                : <a className="btn">Sign In</a>
+              ? 
+              <>
+                <li>
+                  <a href="/dashboard" className='btn m-4'>Dashboard</a>
+                </li>
+                <li>
+                  <a className="btn">Sign Out</a>
+                </li>
+              </>
+              :
+              <>
+                <li>
+                  <a href="/signin" className='btn m-4'>Sign In</a>
+                </li>
+                <li>
+                  <a href="/signup" className='btn'>Sign Up</a>
+                </li>
+              </>
             }
-            </li>
           </ul>
           <h1 className="text-xl font-semibold">Personal Blog</h1>
         </div>
