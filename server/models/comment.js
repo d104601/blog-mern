@@ -18,9 +18,16 @@ const commentSchema = new Schema(
                 ref: "Post"
             }
         ],
+    },
+    {
+        toJSON: {
+            virtuals: true,
+            getters: true
+        },
+        id: false
     }
 );
 
-const Comment = model()
+const Comment = model("comment", commentSchema);
 
 module.exports = Comment;

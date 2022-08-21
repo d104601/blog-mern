@@ -1,4 +1,4 @@
-const router = requier('express').Router();
+const router = require('express').Router();
 const user = require('/user');
 const post = require('/post');
 
