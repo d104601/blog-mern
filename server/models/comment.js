@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const moment = require('moment');
 
 const commentSchema = new Schema(
     {
@@ -6,18 +7,19 @@ const commentSchema = new Schema(
             type: String,
             required: true
         },
-        user: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: "User"
-            }
-        ],
-        post:[ 
-            {
-                type: Schema.Types.ObjectId,
-                ref: "Post"
-            }
-        ],
+        createdAt: {
+            type: Date,
+            default: Date.now,
+            get: (createdAt) => moment(createdAt).format("MMM DD, YYYY [at] hh:mm a")
+        },
+        user: {
+            type: Schema.Types.ObjectId,
+            ref: "User"
+        },
+        post: {
+            type: Schema.Types.ObjectId,
+            ref: "Post"
+        }
     },
     {
         toJSON: {
