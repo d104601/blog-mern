@@ -1,4 +1,6 @@
-const {User, Post, Comment} = require("../models");
+const { User, Post, Comment } = require("../models");
+const { signToken } = require('../utils/auth');
+
 
 const userController ={
     getUsers(req, res) {
@@ -18,6 +20,18 @@ const userController ={
             }
         })
         .catch((err) => res.status(500).json(err));
+    },
+    async login (req, res) {
+        const user = await User.findOne( {email: req.body.email} )
+        if(!user) {
+            res.status(400).json({message: "Incorrect Credentials"});
+        }
+        if(user.password != req.body.password) {
+            res.status(400).json({message: "Incorrect Credentials"});
+        }
+
+        const token = signToken(user);
+        res.status(200).json({token, user});
     },
     addUser(req, res) {
         User.create(req.body)
