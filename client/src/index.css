@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 @layer components {
+  body {
+    @apply
+    bg-black
+    text-white
+  }
   .btn {
     @apply
       py-2

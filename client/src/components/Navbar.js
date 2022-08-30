@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Auth from '../utils/auth';
 
 function Navbar() {
     const [logInStatus, setLogInStatus] = useState(false);
