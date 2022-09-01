@@ -7,6 +7,10 @@ export const getMe = (token) => {
     });
 };
 
+export const getSingleUser = (id) => {
+    return fetch(`/api/user/${id}`);
+}
+
 export const createUser = (userData) => {
     return fetch('/api/user', {
         method: 'POST',
@@ -28,12 +32,7 @@ export const loginUser = (userData) => {
 };
 
 export const getAllPosts = (data) => {
-    return fetch("/api/post", {
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data)
-    })
+    return fetch("/api/post");
 };
 
 export const addPost = (data) => {
