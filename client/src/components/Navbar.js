@@ -9,14 +9,14 @@ function Navbar() {
           <ul className="flex py-4">
             <li><a href="/" className='btn'>Home</a></li>
             {
-              logInStatus
+              Auth.loggedIn()
               ? 
               <>
                 <li>
                   <a href="/dashboard" className='btn m-4'>Dashboard</a>
                 </li>
                 <li>
-                  <a className="btn">Sign Out</a>
+                  <a onClick={Auth.logout} href="/" className="btn">Sign Out</a>
                 </li>
               </>
               :

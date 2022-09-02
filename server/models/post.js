@@ -20,6 +20,9 @@ const postSchema = new Schema(
                 type: Schema.Types.ObjectId,
                 ref: "User"
         },
+        username: {
+            type: String
+        }
     },
     {
         toJSON: {

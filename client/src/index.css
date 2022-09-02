@@ -8,6 +8,7 @@
     bg-black
     text-white
   }
+  
   .btn {
     @apply
       py-2

@@ -1,33 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { getAllPosts, getSingleUser} from "../utils/api";
+import { getAllPosts } from "../utils/api";
 
 const Home = () => {
     const [posts, setPosts] = useState([]);
-    const [username, setUsername] = useState("None");
 
     useEffect(() => {
-        const getUserName = async (id) => {
-            try {
-                const response = await getSingleUser(id);
-                if(response.status !== 200) {
-                    return "User Not Exist";
-                }
-                const user = await response.json();
-                await setUsername(user.username);
-            } catch(err) {
-                return err;
-            }
-        };
-
         const getData = async () => {
             const response = await getAllPosts();
             const items = await response.json();
-            const postData = items.map((post) => {
-                getUserName(post.user);
+            const postData = items.reverse().map((post) => {
                 return {
                     id: post._id,
                     title: post.title,
-                    author: username,
+                    author: post.username || "User Not Exist",
                     date: post.createdAt || "none",
                     content: post.content
                 }
@@ -36,22 +21,25 @@ const Home = () => {
             setPosts(postData);
         };
         getData();
-    }, []);
-
+    },[])
     
+
     return(
         <div className="container mx-auto">
-            {
-                posts.map((post) => {
-                    return (
-                        <div className='card p-4'>
-                            <h1>{post.title}</h1>
-                            <p>Posted on {post.date}</p>
-                            <p>By {post.author}</p>
-                        </div>
-                    );
-                })
-            }
+            <ul className="p-4">
+                {
+                    posts.map((post) => {
+                        return (
+                            <li className='card p-4 btn' key={post.id}>
+                                <a href="/" >
+                                <h1 className="text-lg">{post.title}</h1>
+                                <p className="text-sm">By {post.author} on {post.date}</p>
+                                </a>
+                            </li>
+                        );
+                    })
+                }
+            </ul>
         </div>
     );
 }

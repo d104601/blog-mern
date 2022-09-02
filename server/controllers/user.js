@@ -45,7 +45,12 @@ const userController ={
         )
         .then((data) => {
             if(data) {
-                res.json(data);
+                Post.updateMany(
+                    {user: data._id},
+                    {username: req.body.username}
+                ).then(
+                    res.json(data)
+                );
             }
             else {
                 res.status(404).json({ message: "No user with the id" });
