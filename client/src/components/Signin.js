@@ -23,13 +23,16 @@ function SignIn() {
 
         try {
             const response = await loginUser(userForm);
-                        
-            const { token, user } = await response.json();
-            console.log(user);
-            Auth.login(token);
+            if(response.status === 400)
+            {
+                setAlert(true);
+            }
+            else {
+                const { token, user } = await response.json();
+                Auth.login(token);
+            }      
         } catch (err) {
             console.error(err);
-            setAlert(true);
         }
 
         setUserForm({ email: "", password: ""});

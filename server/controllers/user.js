@@ -26,17 +26,29 @@ const userController ={
         if(!user) {
             res.status(400).json({message: "Incorrect Credentials"});
         }
-        if(user.password != req.body.password) {
-            res.status(400).json({message: "Incorrect Credentials"});
+        else {
+            const pwCheck = await user.checkPassword(req.body.password);
+            if(!pwCheck) {
+                res.status(400).json({
+                    message: "Incorrect Credentials",
+                    result: pwCheck
+                });
+            }
+            else {
+                const token = signToken(user);
+                res.json({token, user});
+            }
         }
-
-        const token = signToken(user);
-        res.status(200).json({token, user});
     },
-    addUser(req, res) {
-        User.create(req.body)
-        .then((data) => res.json(data))
-        .catch((err) => res.status(500).json(err));
+    async addUser(req, res) {
+        const user = User.create(req.body);
+        if(!user) {
+            res.status(500);
+        }
+        else {
+            const token = signToken(user);
+            res.json({ token, user });
+        }
     },
     updateUser(req, res) {
         User.findOneAndUpdate(
