@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Auth from './utils/auth';
 
 import Navbar from "./components/Navbar";
-import Main from "./components/Main";
-import Signin from "./components/Signin";
-import Signup from "./components/Signup";
+import Main from "./pages/Main";
+import Signin from "./pages/Signin";
+import Signup from "./pages/Signup";
+import Dashboard from "./pages/Dashboard";
+import Post from "./pages/Post";
 
 function App() {
-
   return (
     <div className="App font-mono">
       <header className="py-4">
@@ -17,9 +19,12 @@ function App() {
       <Router>
         <>
         <Routes>
-          <Route path='/' element={<Main />}/>
+          <Route path="/" element={<Main />}/>
           <Route path="/signin" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/dashboard" element={Auth.loggedIn() ? <Dashboard /> : <Signin />}
+          />
+          <Route path="/post/:postId" element={<Post />}/>
           <Route path='*' element={<h1>Wrong Page!</h1>}/>
         </Routes>
         </>

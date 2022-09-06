@@ -3,31 +3,17 @@
 @tailwind utilities;
 
 @layer components {
-  body {
+  h1 {
     @apply
-    bg-black
-    text-white
-  }
-  
-  .btn {
-    @apply
-      py-2
-      px-4
-      font-semibold
-      border-2
-      border-solid
-      border-white
-      hover:bg-white
-      hover:text-black
+    text-xl
   }
 
-  .card {
+  .customCard {
     @apply
       mx-4
       my-4
       border-2
       border-solid
-      border-white
   }
 
   .input {

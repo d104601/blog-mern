@@ -41,7 +41,7 @@ const userController ={
         }
     },
     async addUser(req, res) {
-        const user = User.create(req.body);
+        const user = await User.create(req.body);
         if(!user) {
             res.status(500);
         }

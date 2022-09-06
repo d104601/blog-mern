@@ -31,10 +31,24 @@ export const loginUser = (userData) => {
     });
 };
 
-export const getAllPosts = (data) => {
+export const getAllPosts = () => {
     return fetch("/api/post");
 };
 
+export const getUserPosts = (userId) => {
+    return fetch(`/api/post/user/${userId}`);
+};
+
+export const getSinglePost = (postId) => {
+    return fetch(`/api/post/${postId}`);
+};
+
 export const addPost = (data) => {
-    
+    return fetch('/api/post', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
 }

@@ -86,7 +86,7 @@ function SignUp() {
                     </input>
                 </div>
                 <div className='text-center'>
-                    <button className='btn' type='submit'>Create Account</button>
+                    <button className='btn btn-outline' type='submit'>Create Account</button>
                 </div>
             </form>
         </div>

@@ -28,7 +28,7 @@ function SignIn() {
                 setAlert(true);
             }
             else {
-                const { token, user } = await response.json();
+                const { token } = await response.json();
                 Auth.login(token);
             }      
         } catch (err) {
@@ -39,7 +39,7 @@ function SignIn() {
     };
 
     return (
-        <div className="container max-w-xs mx-auto card ">
+        <div className="container max-w-xs mx-auto card">
             <form className="p-4" onSubmit={formSubmit}>
                 <div className='text-xl text-center pb-4'>
                     Sign In
@@ -75,7 +75,7 @@ function SignIn() {
                     </input>
                 </div>
                 <div className='text-center'>
-                    <button className='btn' type='submit'>Sign In</button>
+                    <button className='btn btn-outline' type='submit'>Sign In</button>
                 </div>
             </form>
         </div>

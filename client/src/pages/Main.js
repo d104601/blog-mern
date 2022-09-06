@@ -14,7 +14,8 @@ const Home = () => {
                     title: post.title,
                     author: post.username || "User Not Exist",
                     date: post.createdAt || "none",
-                    content: post.content
+                    content: post.content,
+                    comments: post.comments
                 }
             } 
             );
@@ -30,10 +31,12 @@ const Home = () => {
                 {
                     posts.map((post) => {
                         return (
-                            <li className='card p-4 btn' key={post.id}>
-                                <a href="/" >
-                                <h1 className="text-lg">{post.title}</h1>
-                                <p className="text-sm">By {post.author} on {post.date}</p>
+                            <li key={post.id}>
+                                <a href={`/post/${post.id}`}>
+                                    <div className='btn-outline text-left p-2 customCard border-b-2' href>
+                                        <h1>{post.title} ({post.comments.length})</h1>
+                                        <p>By {post.author} on {post.date}</p>
+                                    </div>
                                 </a>
                             </li>
                         );

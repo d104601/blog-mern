@@ -1,5 +1,7 @@
 const { Schema, model } = require('mongoose');
 const moment = require('moment');
+const autoincrement = require('mongoose-auto-increment');
+
 
 const postSchema = new Schema(
     {
