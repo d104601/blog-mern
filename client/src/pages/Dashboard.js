@@ -41,7 +41,9 @@ const Dashboard = () => {
     return (
         <div className="container mx-auto">
             <h1 className='text-center'>Good to see you, {username}!</h1>
-
+            <div className="text-center">
+                <a href="/dashboard/newpost" className="btn btn-outline my-3">Write New Post</a>
+            </div>
             <h1 className='text-center mt-4'>- Your Posts -</h1>
 
             <ul className="p-4">

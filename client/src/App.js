@@ -8,6 +8,7 @@ import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import Post from "./pages/Post";
+import NewPost from "./pages/NewPost";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/dashboard" element={Auth.loggedIn() ? <Dashboard /> : <Signin />}
           />
           <Route path="/post/:postId" element={<Post />}/>
+          <Route path="/dashboard/newpost" element={<NewPost />}/>
           <Route path='*' element={<h1>Wrong Page!</h1>}/>
         </Routes>
         </>
