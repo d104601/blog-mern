@@ -21,14 +21,14 @@ const Post = () => {
     return (
         <div className="container mx-auto">
             <div className='card-body'>
-                <div className='card-actions justify-front'>
+                <div className='card-actions justify-front border-b-2 pb-4'>
                     <button className="btn btn-outline justify-front" onClick={() => navigate(-1)}>Go Back</button>
                 </div>
                 <h1 className='card-title'>{post.title}</h1>
                 <p>By {post.username}</p>
                 <p>Posted on {post.createdAt}</p>
                 <p className="my-4">{post.content}</p>
-                <div className="card-actions justify-front">
+                <div className="card-actions justify-front border-b-2 pb-4">
                     {
                     user.data._id === post.user 
                     ?
