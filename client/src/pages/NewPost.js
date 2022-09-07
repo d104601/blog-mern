@@ -4,7 +4,7 @@ import { addPost } from "../utils/api";
 
 function NewPost() {
     const user = Auth.getProfile();
-    const [postForm, setPostForm] = useState({ title: "", username: user.data.username, content: ""})
+    const [postForm, setPostForm] = useState({ title: "", user: user.data._id, username: user.data.username, content: ""})
 
     const inputHandler = (event) => {
         const {name, value} = event.target;

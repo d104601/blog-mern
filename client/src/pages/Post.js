@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { getSinglePost } from '../utils/api';
 import { useParams, useNavigate } from "react-router-dom";
+import Auth from '../utils/auth';
 
 const Post = () => {
+    const user = Auth.getProfile();
     const { postId } = useParams();
     const navigate = useNavigate();
     const [post, setPost] = useState({});
@@ -16,15 +18,28 @@ const Post = () => {
         getPost();
     }, []);
 
-
     return (
         <div className="container mx-auto">
-            <button className="btn btn-outline" onClick={() => navigate(-1)}>Go Back</button>
             <div className='card-body'>
+                <div className='card-actions justify-front'>
+                    <button className="btn btn-outline justify-front" onClick={() => navigate(-1)}>Go Back</button>
+                </div>
                 <h1 className='card-title'>{post.title}</h1>
                 <p>By {post.username}</p>
                 <p>Posted on {post.createdAt}</p>
                 <p className="my-4">{post.content}</p>
+                <div className="card-actions justify-front">
+                    {
+                    user.data._id === post.user 
+                    ?
+                    <>
+                        <button className='btn btn-outline'>Modify</button>
+                        <button className='btn btn-outline'>Delete</button>
+                    </>
+                    :
+                    <></>
+                    }    
+                </div>
             </div>                
         </div>
     )
