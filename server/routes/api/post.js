@@ -9,6 +9,9 @@ const {
     removePost
 } = require("../../controllers/post");
 
+const { authMiddleware } = require('../../utils/auth');
+
+
 // api/post
 router.route("/").get(getPosts).post(addPost);
 
