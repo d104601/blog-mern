@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getSinglePost } from '../utils/api';
+import { getSinglePost, removePost } from '../utils/api';
 import { useParams, useNavigate } from "react-router-dom";
 import Auth from '../utils/auth';
 
@@ -18,6 +18,15 @@ const Post = () => {
         getPost();
     }, []);
 
+    const deletePost = async () => {
+        const response = await removePost(postId);
+        if(response.status === 200) {
+            window.location.assign('/dashboard');
+        } else {
+            console.log("failed to delete post");
+        }
+    }
+
     return (
         <div className="container mx-auto">
             <div className='card-body'>
@@ -34,7 +43,17 @@ const Post = () => {
                     ?
                     <>
                         <button className='btn btn-outline'>Modify</button>
-                        <button className='btn btn-outline'>Delete</button>
+                        <label htmlFor="delete" className='btn btn-outline modal-button'>Delete</label>
+                        <input type="checkbox" id="delete" className="modal-toggle" />
+                        <div className='modal'>
+                            <div className='modal-box'>
+                                <h1>Are your sure?</h1>
+                                <div className='modal-action'>
+                                    <label htmlFor='delete' className='btn btn-outline' onClick={deletePost}>Yes</label>
+                                    <label htmlFor='delete' className='btn btn-outline'>No</label>
+                                </div>
+                            </div>
+                        </div>
                     </>
                     :
                     <></>

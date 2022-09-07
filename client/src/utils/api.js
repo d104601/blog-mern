@@ -50,5 +50,11 @@ export const addPost = (data) => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(data)
-    })
+    });
+}
+
+export const removePost = (postId) => {
+    return fetch(`/api/post/${postId}`, {
+        method: 'DELETE'
+    });
 }
