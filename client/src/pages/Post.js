@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getSinglePost, removePost } from '../utils/api';
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link} from "react-router-dom";
 import Auth from '../utils/auth';
 
 const Post = () => {
@@ -42,7 +42,7 @@ const Post = () => {
                     user.data._id === post.user 
                     ?
                     <>
-                        <button className='btn btn-outline'>Modify</button>
+                        <Link to={"/dashboard/edit"} state= {post} className='btn btn-outline'>Edit</Link>
                         <label htmlFor="delete" className='btn btn-outline modal-button'>Delete</label>
                         <input type="checkbox" id="delete" className="modal-toggle" />
                         <div className='modal'>

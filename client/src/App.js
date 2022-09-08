@@ -9,6 +9,7 @@ import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import Post from "./pages/Post";
 import NewPost from "./pages/NewPost";
+import EditPost from "./pages/EditPost";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           />
           <Route path="/post/:postId" element={<Post />}/>
           <Route path="/dashboard/newpost" element={<NewPost />}/>
+          <Route path="/dashboard/edit" element={<EditPost />}/>
           <Route path='*' element={<h1>Wrong Page!</h1>}/>
         </Routes>
         </>

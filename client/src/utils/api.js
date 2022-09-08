@@ -51,10 +51,20 @@ export const addPost = (data) => {
         },
         body: JSON.stringify(data)
     });
-}
+};
+
+export const updatePost = (data) => {
+    return fetch(`/api/post/${data.id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    });
+};
 
 export const removePost = (postId) => {
     return fetch(`/api/post/${postId}`, {
         method: 'DELETE'
     });
-}
+};
