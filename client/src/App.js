@@ -15,24 +15,24 @@ function App() {
   return (
     <div className="App font-mono">
       <header className="py-4">
-        <Navbar/>
+        <Navbar />
       </header>
       <div>
-      <Router>
-        <>
-        <Routes>
-          <Route path="/" element={<Main />}/>
-          <Route path="/signin" element={<Signin />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/dashboard" element={Auth.loggedIn() ? <Dashboard /> : <Signin />}
-          />
-          <Route path="/post/:postId" element={<Post />}/>
-          <Route path="/dashboard/newpost" element={<NewPost />}/>
-          <Route path="/dashboard/edit" element={<EditPost />}/>
-          <Route path='*' element={<h1>Wrong Page!</h1>}/>
-        </Routes>
-        </>
-      </Router>
+        <Router>
+          <>
+            <Routes>
+              <Route path="/" element={<Main />} />
+              <Route path="/signin" element={<Signin />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/dashboard" element={Auth.loggedIn() ? <Dashboard /> : <Signin />}
+              />
+              <Route path="/post/:postId" element={<Post />} />
+              <Route path="/dashboard/newpost" element={<NewPost />} />
+              <Route path="/dashboard/edit" element={<EditPost />} />
+              <Route path='*' element={<h1>Wrong Page!</h1>} />
+            </Routes>
+          </>
+        </Router>
       </div>
     </div>
   );
