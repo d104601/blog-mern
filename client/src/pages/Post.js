@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { getSinglePost, removePost } from '../utils/api';
-import { useParams, useNavigate, Link, useLocation } from "react-router-dom";
+import { useParams, useNavigate, Link} from "react-router-dom";
 import Auth from '../utils/auth';
 
 const Post = () => {
-    const user = Auth.getProfile();
+    let user = {};
+    if (Auth.loggedIn()) {
+        user = Auth.getProfile();
+    }
     const { postId } = useParams();
     const navigate = useNavigate();
     const [post, setPost] = useState({});
@@ -39,27 +42,23 @@ const Post = () => {
                 <p className="my-4">{post.content}</p>
                 <div className="card-actions justify-front border-b-2 pb-4">
                     {
-                        Auth.loggedIn()
+                        Auth.loggedIn() && user.data._id === post.user
                             ?
-                            <> {
-                                user.data._id === post.user
-                                    ?
-                                    <>
-                                        <Link to={"/dashboard/edit"} state={post} className='btn btn-outline'>Edit</Link>
-                                        <label htmlFor="delete" className='btn btn-outline modal-button'>Delete</label>
+                            <>
+                                <Link to={"/dashboard/edit"} state={post} className='btn btn-outline'>Edit</Link>
+                                <label htmlFor="delete" className='btn btn-outline modal-button'>Delete</label>
 
-                                        <input type="checkbox" id="delete" className="modal-toggle" />
-                                        <div className='modal'>
-                                            <div className='modal-box'>
-                                                <h1>Are your sure?</h1>
-                                                <div className='modal-action'>
-                                                    <label htmlFor='delete' className='btn btn-outline' onClick={deletePost}>Yes</label>
-                                                    <label htmlFor='delete' className='btn btn-outline'>No</label>
-                                                </div>
-                                            </div>
+                                <input type="checkbox" id="delete" className="modal-toggle" />
+                                <div className='modal'>
+                                    <div className='modal-box'>
+                                        <h1>Are your sure?</h1>
+                                        <div className='modal-action'>
+                                            <label htmlFor='delete' className='btn btn-outline' onClick={deletePost}>Yes</label>
+                                            <label htmlFor='delete' className='btn btn-outline'>No</label>
                                         </div>
-                                    </> : <></>
-                            } </> : <></>
+                                    </div>
+                                </div>
+                            </> : <></>
                     }
 
 
