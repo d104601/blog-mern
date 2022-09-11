@@ -40,6 +40,8 @@ const userController ={
             }
         }
     },
+
+    // for signup, after signup is successful, try login with req
     async addUser(req, res) {
         const signup = await User.create(req.body);
         if(!signup) {

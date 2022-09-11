@@ -48,7 +48,7 @@ const Post = () => {
                             :
                             <></>
                     }
-                    /* Temp Delete button for just in case */
+                    {/* Temp Delete button for just in case */}
                     <label htmlFor="delete" className='btn btn-outline modal-button'>Delete</label>
 
                     <input type="checkbox" id="delete" className="modal-toggle" />
