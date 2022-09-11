@@ -41,11 +41,12 @@ const userController ={
         }
     },
     async addUser(req, res) {
-        const user = await User.create(req.body);
-        if(!user) {
+        const signup = await User.create(req.body);
+        if(!signup) {
             res.status(500);
         }
         else {
+            const user = await User.findOne( {email: req.body.email} )
             const token = signToken(user);
             res.json({ token, user });
         }
