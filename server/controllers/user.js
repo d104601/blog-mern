@@ -41,14 +41,13 @@ const userController ={
         }
     },
 
-    // for signup, after signup is successful, try login with req
+    // for signup, after signup is successful, login with token
     async addUser(req, res) {
-        const signup = await User.create(req.body);
-        if(!signup) {
+        const user = await User.create(req.body);
+        if(!user) {
             res.status(500);
         }
         else {
-            const user = await User.findOne( {email: req.body.email} )
             const token = signToken(user);
             res.json({ token, user });
         }

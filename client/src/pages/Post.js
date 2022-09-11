@@ -39,28 +39,31 @@ const Post = () => {
                 <p className="my-4">{post.content}</p>
                 <div className="card-actions justify-front border-b-2 pb-4">
                     {
-                        user.data._id === post.user
+                        Auth.loggedIn()
                             ?
-                            <>
-                                <Link to={"/dashboard/edit"} state={post} className='btn btn-outline'>Edit</Link>
+                            <> {
+                                user.data._id === post.user
+                                    ?
+                                    <>
+                                        <Link to={"/dashboard/edit"} state={post} className='btn btn-outline'>Edit</Link>
+                                        <label htmlFor="delete" className='btn btn-outline modal-button'>Delete</label>
 
-                            </>
-                            :
-                            <></>
+                                        <input type="checkbox" id="delete" className="modal-toggle" />
+                                        <div className='modal'>
+                                            <div className='modal-box'>
+                                                <h1>Are your sure?</h1>
+                                                <div className='modal-action'>
+                                                    <label htmlFor='delete' className='btn btn-outline' onClick={deletePost}>Yes</label>
+                                                    <label htmlFor='delete' className='btn btn-outline'>No</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </> : <></>
+                            } </> : <></>
                     }
-                    {/* Temp Delete button for just in case */}
-                    <label htmlFor="delete" className='btn btn-outline modal-button'>Delete</label>
 
-                    <input type="checkbox" id="delete" className="modal-toggle" />
-                    <div className='modal'>
-                        <div className='modal-box'>
-                            <h1>Are your sure?</h1>
-                            <div className='modal-action'>
-                                <label htmlFor='delete' className='btn btn-outline' onClick={deletePost}>Yes</label>
-                                <label htmlFor='delete' className='btn btn-outline'>No</label>
-                            </div>
-                        </div>
-                    </div>
+
+                    {/* Temp Delete button for just in case */}
                 </div>
             </div>
         </div>
