@@ -12,6 +12,7 @@ const Post = () => {
     const navigate = useNavigate();
     const [post, setPost] = useState({});
 
+
     useEffect(() => {
         const getPost = async () => {
             const response = await getSinglePost(postId);
@@ -60,9 +61,16 @@ const Post = () => {
                                 </div>
                             </> : <></>
                     }
+                </div>
 
-
-                    {/* Temp Delete button for just in case */}
+                <div>
+                    {
+                        post.comments.length === 0 
+                        ?
+                        <p className='text-center mt-2'>There's no comments yet</p> 
+                        :
+                        <></>
+                    }
                 </div>
             </div>
         </div>

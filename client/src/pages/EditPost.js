@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom'
-import { getSinglePost, updatePost } from "../utils/api";
+import { updatePost } from "../utils/api";
 
 function NewPost() {
     const location = useLocation();
