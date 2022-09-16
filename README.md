@@ -3,6 +3,13 @@
 ## Description
 Web Application that user can post text based article with own account. User can create own account and then write any article. The application is built with React, MongoDB, Express.js, and Node.js.
 
+## Technologies Used
+* React.js
+* Tailwind CSS - Daisy UI Plugin
+* Express.js
+* MongoDB
+* Node.js
+
 ## Installation
 No additional installation required for this application basically. 
 
