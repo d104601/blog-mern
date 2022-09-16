@@ -11,6 +11,7 @@ const Post = () => {
     const { postId } = useParams();
     const navigate = useNavigate();
     const [post, setPost] = useState({});
+    const [comments, setComments] = useState([])
 
 
     useEffect(() => {
@@ -65,12 +66,13 @@ const Post = () => {
 
                 <div>
                     {
-                        post.comments.length === 0 
+                        comments.length === 0
                         ?
-                        <p className='text-center mt-2'>There's no comments yet</p> 
+                        <p className='text-center mt-2'>There's no comments yet</p>
                         :
                         <></>
                     }
+                    <hr></hr>
                 </div>
                 <div>
                     {
