@@ -72,6 +72,13 @@ const Post = () => {
                         <></>
                     }
                 </div>
+                <div>
+                    {
+                        Auth.loggedIn() ? <></> 
+                        :
+                        <p className='text-center mt-2'>Need to sign in to write comment.</p> 
+                    }
+                </div>
             </div>
         </div>
     )
